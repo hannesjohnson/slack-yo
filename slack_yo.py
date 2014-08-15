@@ -14,10 +14,7 @@ def yo_handler():
 
     r = requests.post("http://api.justyo.co/yoall/", data={'api_token': YO_API_TOKEN})
 
-    if 'result' in r.json() and r.json()['result'] == 'OK':
-        return json.dumps({'text': 'Yo sent to team!'})
-    else:
-        return json.dumps({'text': 'Error sending Yo. Their API may be down, Yo.'})
+    return json.dumps({'text': r.text})
 
 if __name__ == "__main__":
     app.run()
